@@ -1,0 +1,99 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sublime - stunning free HTML5/CSS3 website template</title>
+    <meta charset="utf-8">
+    <meta name="author" content="pixelhint.com">
+    <meta name="description" content="Sublime Stunning free HTML5/CSS3 website template" />
+
+    <script src="~/Content/js/fancybox-buttons.js"></script>
+    <script src="~/Content/js/fancybox-media.js"></script>
+    <script src="~/Content/js/fancybox-thumbs.js"></script>
+    <script src="~/Content/js/fancybox.js"></script>
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/wow.js"></script>
+
+    <link href="~/Content/css/reset.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/fancybox-buttons.css" rel="stylesheet" />
+    <link href="~/Content/css/fancybox-thumbs.css" rel="stylesheet" />
+    <link href="~/Content/css/fancybox.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+</head>
+<body>
+
+    <section class="billboard dark">
+        <header class="wrapper dark">
+
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Becados", "Index", "Becados")</li>
+                    <li>@Html.ActionLink("Tutores", "Index", "Tutores")</li>
+                    <li>@Html.ActionLink("Escuela", "Index", "Escuelas")</li>
+                    <li>@Html.ActionLink("Hisotrial", "Index", "HistoricoAnuals")</li>
+                    <li>@Html.ActionLink("Categoria", "Index", "Categorias")</li>
+                    <li>@Html.ActionLink("Imprime Folio", "Index", "FolioAnuals")</li>
+                    <li>@Html.ActionLink("Periodos", "Index", "Periodos")</li>
+                    <li>@Html.ActionLink("Servicios", "Index", "Servicios")</li>
+
+                    <li><a href="">Sobre Fundacion VAN</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="caption dark animated wow fadeInDown clearfix">
+            <h1>FUNDACIÓN VAN A.C.</h1>
+            <p>Donde los sueños se vuelven realidad </p>
+            <a href="../../Becados"><img class="logo"> <img src="~/Content/img/Icono.png" /> </a>
+            <p></p>
+            <hr>
+        </div>
+        <div class="shadow"></div>
+    </section><!--  End billboard  -->
+
+
+    <section class="services wrapper">
+        <ul class="clearfix">
+            <li class="animated wow fadeInDown">
+                <a href="../../Becados"><img class="logo"><img src="~/Content/img/icon1.png" /> </a>
+                <span class="separator"></span>
+                <h2>Alumnos Becados</h2>
+                <p>
+                    Aqui se podra ver todos los alumnos becados
+                </p>
+
+            </li>
+            <li class="animated wow fadeInDown" data-wow-delay=".2s">
+                <a href="../../Becados"><img class="logo"> <img src="~/Content/img/icon2.png" /></a>
+                <span class="separator"></span>
+                <h2>Pagos</h2>
+                <p>Aqui se ven los pagos hechos y pendientes</p>
+            </li>
+            <li class="animated wow fadeInDown" data-wow-delay=".4s">
+                <a href="../../Becados"><img class="logo"> <img src="~/Content/img/icon3.png" /> </a>
+                <span class="separator"></span>
+                <h2>Historico</h2>
+                <p>Busca Registro Completo de los Becados</p>
+            </li>
+        </ul>
+    </section><!--  End services  -->
+
+
+
+    <footer>
+        <div>
+
+        </div>
+    </footer><!--  End footer  -->
+    <script src='../ga.js'></script>
+</body>
+</html>
+
+<style>
+
+</style>

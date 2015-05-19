@@ -1,0 +1,122 @@
+﻿@model Pamela_4._0.Models.Categoria
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Categoria</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DuracionPeriodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DuracionPeriodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroHoras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroHoras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaP1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaP1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaP2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaP2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaP3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaP3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaP4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaP4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaP5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaP5)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDCategoria }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

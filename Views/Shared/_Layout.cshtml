@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Fundación VAN", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Becados", "Index", "Becados")</li>
+                    <li>@Html.ActionLink("Tutores", "Index", "Tutores")</li>
+                    <li>@Html.ActionLink("Escuela", "Index", "Escuelas")</li>
+                    <li>@Html.ActionLink("Historia", "Index", "HistoricoAnuals")</li>
+                    <li>@Html.ActionLink("Categoria", "Index", "Categorias")</li>
+                    <li>@Html.ActionLink("Imprime Folio", "Index", "FolioAnuals")</li>
+                    <li>@Html.ActionLink("Periodo", "Index", "Periodo")</li>
+                    <li>@Html.ActionLink("Servicios", "Index", "Servicios")</li>
+                
+                </ul>
+              
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Fundación VAN</p>
+        </footer>
+    </div>
+     
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</body>
+</html>
+<style>
+    table, td, th {
+        border: 1px solid green;
+    }
+
+    th {
+        background-color: green;
+        color: white;
+    }
+</style>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Pamela_4._0.Models.View__HistoricoFolios_Result>
+
+@{
+    ViewBag.Title = "FolioView";
+}
+
+<h2>FolioView</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.IDHistoricoAnual)
+        
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDBecado)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+        @Html.DisplayNameFor(model => model.ModoPago)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDHistoricoAnual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDBecado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Monto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModoPago)
+            </td>
+            </tr>
+    }
+    </table>

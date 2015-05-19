@@ -1,0 +1,74 @@
+﻿@model Pamela_4._0.Models.HistoricoAnual
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HistoricoAnual</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Promedio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promedio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorasRealizadas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorasRealizadas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Becado.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Becado.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.NombreCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.NombreCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Escuela.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Escuela.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Periodo.IDPeriodos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Periodo.IDPeriodos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDHistoricoAnual }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

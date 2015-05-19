@@ -1,0 +1,234 @@
+﻿@model IEnumerable<Pamela_4._0.Models.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result>
+@{
+    ViewBag.Title = "BuscarNuevaTabla";
+}
+
+
+
+<h2>Informacion Becado</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreBecado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPaternoBecado)
+        </th>
+        <th>
+              @Html.DisplayNameFor(model => model.ApellidoMaternoBecado)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.NombreEscuela)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Promedio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroHoras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorasRealizadas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TecEncargadoServicio)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreBecado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoPaternoBecado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApellidoMaternoBecado)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEscuela)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Promedio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCategoria)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroHoras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreServicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorasRealizadas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TecEncargadoServicio)
+            </td>
+        </tr>
+    }
+</table>
+<h2>Informacion de las parcialidades a entregar del becado</h2>
+
+<table class="table">
+    <tr>
+    <th>
+        @Html.DisplayNameFor(model => model.Parcialidad1)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.FechaP1)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Parcialidad2)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.FechaP2)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Parcialidad3)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.FechaP3)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Parcialidad4)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.FechaP4)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Parcialidad5)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.FechaP5)
+    </th>
+</tr>
+   @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcialidad1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaP1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Parcialidad2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaP2)
+               </td><td>
+    @Html.DisplayFor(modelItem => item.Parcialidad3)
+            </td>
+<td>
+    @Html.DisplayFor(modelItem => item.FechaP3)
+</td><td>
+    @Html.DisplayFor(modelItem => item.Parcialidad4)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.FechaP4)
+</td><td>
+    @Html.DisplayFor(modelItem => item.Parcialidad5)
+</td>
+<td>
+    @Html.DisplayFor(modelItem => item.FechaP5)
+</td>
+</tr>
+   }
+
+</table>
+
+        <h2>Informacion Tutor de Becado</h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoPaternoTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoMaternoTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DomicilioTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorreoElectronicoTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ActividadTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelCasaTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelCelularTutor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelCasaTrabajo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DomicilioTutor)
+                </th>
+                <th></th>
+                @*@Html.DisplayNameFor(model => model*@
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApellidoPaternoTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApellidoMaternoTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DomicilioTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorreoElectronicoTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ActividadTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelCasaTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelCelularTutor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelCasaTrabajo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DomicilioTutor)
+                    </td>
+                </tr>
+            }
+        </table>
+<style>
+
+    table, td, th {
+        border: 1px solid green;
+    }
+
+    th {
+        background-color: green;
+    color: white;
+    }
+</style>

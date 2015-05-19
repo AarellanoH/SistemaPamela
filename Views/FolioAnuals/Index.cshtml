@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Pamela_4._0.Models.FolioAnual>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Folio</h2>
+
+<p>
+    @Html.ActionLink("Create New", "PartialView")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModoPago)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HistoricoAnual.IDHistoricoAnual)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModoPago)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HistoricoAnual.IDHistoricoAnual)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.IDFolio }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.IDFolio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDFolio })
+        </td>
+    </tr>
+}
+
+</table>

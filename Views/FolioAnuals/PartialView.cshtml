@@ -1,0 +1,9 @@
+﻿@model Pamela_4._0.Models.PartialModels
+@{
+    ViewBag.Title = "MyPartialView";
+}
+<h2>Pagos</h2>
+
+@Html.Partial("Create",Model.anual)
+@Html.Partial("FolioView", Model.historiaList)
+

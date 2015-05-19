@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Pamela_4._0.Models.HistoricoAnual>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Historico</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Promedio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorasRealizadas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Becado.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.NombreCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Escuela.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periodo.IDPeriodos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Servicio.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promedio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorasRealizadas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Becado.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.NombreCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Escuela.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periodo.IDPeriodos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Servicio.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDHistoricoAnual }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDHistoricoAnual }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDHistoricoAnual })
+        </td>
+    </tr>
+}
+
+</table>

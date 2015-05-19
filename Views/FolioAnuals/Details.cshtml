@@ -1,0 +1,58 @@
+﻿@model Pamela_4._0.Models.FolioAnual
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FolioAnual</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModoPago)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModoPago)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parcialidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parcialidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HistoricoAnual.IDHistoricoAnual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HistoricoAnual.IDHistoricoAnual)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDFolio }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

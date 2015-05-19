@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Pamela_4._0.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categorias</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreCategoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DuracionPeriodo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroHoras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parcialidad5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaP1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaP2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaP3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaP4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaP5)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NombreCategoria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DuracionPeriodo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroHoras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parcialidad5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaP1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaP2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaP3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaP4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaP5)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCategoria }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCategoria }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCategoria })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,2272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PamelaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Becado">
+          <Key>
+            <PropertyRef Name="IDBecado" />
+          </Key>
+          <Property Name="IDBecado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPadre" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="60" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IDCategoria" />
+          </Key>
+          <Property Name="IDCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCategoria" Type="nvarchar" MaxLength="20" />
+          <Property Name="DuracionPeriodo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="NumeroHoras" Type="int" Nullable="false" />
+          <Property Name="Parcialidad1" Type="money" Nullable="false" />
+          <Property Name="Parcialidad2" Type="money" />
+          <Property Name="Parcialidad3" Type="money" />
+          <Property Name="Parcialidad4" Type="money" />
+          <Property Name="Parcialidad5" Type="money" />
+          <Property Name="FechaP1" Type="date" />
+          <Property Name="FechaP2" Type="date" />
+          <Property Name="FechaP3" Type="date" />
+          <Property Name="FechaP4" Type="date" />
+          <Property Name="FechaP5" Type="date" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="IDEscuela" />
+          </Key>
+          <Property Name="IDEscuela" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+          <Property Name="Encargado" Type="nvarchar" MaxLength="160" />
+        </EntityType>
+        <EntityType Name="FolioAnual">
+          <Key>
+            <PropertyRef Name="IDFolio" />
+          </Key>
+          <Property Name="IDFolio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Monto" Type="money" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="ModoPago" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="IDHistorico" Type="int" Nullable="false" />
+          <Property Name="Parcialidad" Type="int" />
+        </EntityType>
+        <EntityType Name="HistoricoAnual">
+          <Key>
+            <PropertyRef Name="IDHistoricoAnual" />
+          </Key>
+          <Property Name="IDHistoricoAnual" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDPeriodos" Type="int" Nullable="false" />
+          <Property Name="IDBecado" Type="int" Nullable="false" />
+          <Property Name="IDCategoria" Type="int" Nullable="false" />
+          <Property Name="IDEscuela" Type="int" />
+          <Property Name="Promedio" Type="int" />
+          <Property Name="IDServicio" Type="int" />
+          <Property Name="HorasRealizadas" Type="int" />
+        </EntityType>
+        <EntityType Name="Periodos">
+          <Key>
+            <PropertyRef Name="IDPeriodos" />
+          </Key>
+          <Property Name="IDPeriodos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaInicio" Type="date" Nullable="false" />
+          <Property Name="FechaFinal" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="IDServicio" />
+          </Key>
+          <Property Name="IDServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Encargado" Type="nchar" MaxLength="160" />
+          <Property Name="TelEncargado" Type="nvarchar" MaxLength="10" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="IDTutor" />
+          </Key>
+          <Property Name="IDTutor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="nvarchar" MaxLength="50" />
+          <Property Name="Actividad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelCasa" Type="nchar" MaxLength="10" />
+          <Property Name="TelCelular" Type="nvarchar" MaxLength="10" />
+          <Property Name="TelTrabajo" Type="nchar" MaxLength="10" />
+          <Property Name="Domicilio" Type="nvarchar" MaxLength="100" />
+          <Property Name="CorreoElectronico" Type="nchar" MaxLength="256" />
+        </EntityType>
+        <Association Name="FK_Becado_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Becado" Type="Self.Becado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="IDTutor" />
+            </Principal>
+            <Dependent Role="Becado">
+              <PropertyRef Name="IDPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolioAnual_HistoricoAnual">
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="1" />
+          <End Role="FolioAnual" Type="Self.FolioAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoricoAnual">
+              <PropertyRef Name="IDHistoricoAnual" />
+            </Principal>
+            <Dependent Role="FolioAnual">
+              <PropertyRef Name="IDHistorico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Becado">
+          <End Role="Becado" Type="Self.Becado" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becado">
+              <PropertyRef Name="IDBecado" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDBecado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IDCategoria" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="IDEscuela" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Periodos">
+          <End Role="Periodos" Type="Self.Periodos" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodos">
+              <PropertyRef Name="IDPeriodos" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDPeriodos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="IDServicio" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="ActualizaBecado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idBecado" Type="int" Mode="In" />
+          <Parameter Name="idPadre" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarBecado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+          <Parameter Name="NombreBecado" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="BuscarBecadoBD3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BuscarNuevaTabla" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="Grande" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+          <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertaAnual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFinal" Type="date" Mode="In" />
+        </Function>
+        <Function Name="InsertaBecado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idtutor" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="telefono" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertaCategoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="duracionPeriodo" Type="nvarchar" Mode="In" />
+          <Parameter Name="numeroHoras" Type="int" Mode="In" />
+          <Parameter Name="parcialidad1" Type="money" Mode="In" />
+          <Parameter Name="parcialidad2" Type="money" Mode="In" />
+          <Parameter Name="parcialidad3" Type="money" Mode="In" />
+          <Parameter Name="parcialidad4" Type="money" Mode="In" />
+          <Parameter Name="parcialidad5" Type="money" Mode="In" />
+          <Parameter Name="fechaP1" Type="date" Mode="In" />
+          <Parameter Name="fechaP2" Type="date" Mode="In" />
+          <Parameter Name="fechaP3" Type="date" Mode="In" />
+          <Parameter Name="fechaP4" Type="date" Mode="In" />
+          <Parameter Name="fechaP5" Type="date" Mode="In" />
+        </Function>
+        <Function Name="InsertaEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="encargado" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertaFolioAnual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="monto" Type="money" Mode="In" />
+          <Parameter Name="fecha" Type="date" Mode="In" />
+          <Parameter Name="modopago" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertaFolioSemestral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDFolio" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="money" Mode="In" />
+          <Parameter Name="Fecha" Type="date" Mode="In" />
+          <Parameter Name="ModoPago" Type="nvarchar" Mode="In" />
+          <Parameter Name="IDHistorico" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertaHistoricoAnual" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAnual" Type="int" Mode="In" />
+          <Parameter Name="idBecado" Type="int" Mode="In" />
+          <Parameter Name="idCategoria" Type="int" Mode="In" />
+          <Parameter Name="idEscuela" Type="int" Mode="In" />
+          <Parameter Name="promedio" Type="int" Mode="In" />
+          <Parameter Name="idServicio" Type="int" Mode="In" />
+          <Parameter Name="horasRealizadas" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertaHistoricoSemestral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idSemestral" Type="int" Mode="In" />
+          <Parameter Name="idBecado" Type="int" Mode="In" />
+          <Parameter Name="idCategoria" Type="int" Mode="In" />
+          <Parameter Name="idEscuela" Type="int" Mode="In" />
+          <Parameter Name="promedio" Type="int" Mode="In" />
+          <Parameter Name="idServicio" Type="int" Mode="In" />
+          <Parameter Name="horasRealizadas" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsertaSemestral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicio" Type="date" Mode="In" />
+          <Parameter Name="FechaFinal" Type="date" Mode="In" />
+        </Function>
+        <Function Name="InsertaServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="encargado" Type="nvarchar" Mode="In" />
+          <Parameter Name="telEncargado" Type="nvarchar" Mode="In" />
+          <Parameter Name="direccion" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsertaTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoPaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="apellidoMaterno" Type="nvarchar" Mode="In" />
+          <Parameter Name="actividad" Type="nvarchar" Mode="In" />
+          <Parameter Name="telCasa" Type="nvarchar" Mode="In" />
+          <Parameter Name="telCelular" Type="nvarchar" Mode="In" />
+          <Parameter Name="telTrabajo" Type="nvarchar" Mode="In" />
+          <Parameter Name="domicilio" Type="nvarchar" Mode="In" />
+          <Parameter Name="mail" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__BecadoTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoFolios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoPeriodosCategoriaBecadoTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View__HistoricoServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="View_Becado_BecadoTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoFolios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_Becado_HistoricoServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+        </Function>
+        <Function Name="View_BecadoPeriodo_HistoricoFolios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IDBecado" Type="int" Mode="In" />
+          <Parameter Name="IDPeriodo" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="PamelaModelStoreContainer">
+          <EntitySet Name="Becado" EntityType="Self.Becado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FolioAnual" EntityType="Self.FolioAnual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoricoAnual" EntityType="Self.HistoricoAnual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periodos" EntityType="Self.Periodos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tutor" EntityType="Self.Tutor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Becado_Tutor" Association="Self.FK_Becado_Tutor">
+            <End Role="Tutor" EntitySet="Tutor" />
+            <End Role="Becado" EntitySet="Becado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolioAnual_HistoricoAnual" Association="Self.FK_FolioAnual_HistoricoAnual">
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+            <End Role="FolioAnual" EntitySet="FolioAnual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Becado" Association="Self.FK_HistoricoAnual_Becado">
+            <End Role="Becado" EntitySet="Becado" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Categoria" Association="Self.FK_HistoricoAnual_Categoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Escuela" Association="Self.FK_HistoricoAnual_Escuela">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Periodos" Association="Self.FK_HistoricoAnual_Periodos">
+            <End Role="Periodos" EntitySet="Periodos" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Servicio" Association="Self.FK_HistoricoAnual_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnual" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PamelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Becado">
+          <Key>
+            <PropertyRef Name="IDBecado" />
+          </Key>
+          <Property Name="IDBecado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPadre" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tutor" Relationship="Self.FK_Becado_Tutor" FromRole="Becado" ToRole="Tutor" />
+          <NavigationProperty Name="HistoricoAnuals" Relationship="Self.FK_HistoricoAnual_Becado" FromRole="Becado" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IDCategoria" />
+          </Key>
+          <Property Name="IDCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DuracionPeriodo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="NumeroHoras" Type="Int32" Nullable="false" />
+          <Property Name="Parcialidad1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Parcialidad2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Parcialidad3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Parcialidad4" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Parcialidad5" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FechaP1" Type="DateTime" Precision="0" />
+          <Property Name="FechaP2" Type="DateTime" Precision="0" />
+          <Property Name="FechaP3" Type="DateTime" Precision="0" />
+          <Property Name="FechaP4" Type="DateTime" Precision="0" />
+          <Property Name="FechaP5" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="HistoricoAnuals" Relationship="Self.FK_HistoricoAnual_Categoria" FromRole="Categoria" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="IDEscuela" />
+          </Key>
+          <Property Name="IDEscuela" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Encargado" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistoricoAnuals" Relationship="Self.FK_HistoricoAnual_Escuela" FromRole="Escuela" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="FolioAnual">
+          <Key>
+            <PropertyRef Name="IDFolio" />
+          </Key>
+          <Property Name="IDFolio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Monto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ModoPago" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDHistorico" Type="Int32" Nullable="false" />
+          <Property Name="Parcialidad" Type="Int32" />
+          <NavigationProperty Name="HistoricoAnual" Relationship="Self.FK_FolioAnual_HistoricoAnual" FromRole="FolioAnual" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="HistoricoAnual">
+          <Key>
+            <PropertyRef Name="IDHistoricoAnual" />
+          </Key>
+          <Property Name="IDHistoricoAnual" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDPeriodos" Type="Int32" Nullable="false" />
+          <Property Name="IDBecado" Type="Int32" Nullable="false" />
+          <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+          <Property Name="IDEscuela" Type="Int32" />
+          <Property Name="Promedio" Type="Int32" />
+          <Property Name="IDServicio" Type="Int32" />
+          <Property Name="HorasRealizadas" Type="Int32" />
+          <NavigationProperty Name="Becado" Relationship="Self.FK_HistoricoAnual_Becado" FromRole="HistoricoAnual" ToRole="Becado" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK_HistoricoAnual_Categoria" FromRole="HistoricoAnual" ToRole="Categoria" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK_HistoricoAnual_Escuela" FromRole="HistoricoAnual" ToRole="Escuela" />
+          <NavigationProperty Name="FolioAnuals" Relationship="Self.FK_FolioAnual_HistoricoAnual" FromRole="HistoricoAnual" ToRole="FolioAnual" />
+          <NavigationProperty Name="Periodo" Relationship="Self.FK_HistoricoAnual_Periodos" FromRole="HistoricoAnual" ToRole="Periodos" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_HistoricoAnual_Servicio" FromRole="HistoricoAnual" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Periodo">
+          <Key>
+            <PropertyRef Name="IDPeriodos" />
+          </Key>
+          <Property Name="IDPeriodos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="HistoricoAnuals" Relationship="Self.FK_HistoricoAnual_Periodos" FromRole="Periodos" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="IDServicio" />
+          </Key>
+          <Property Name="IDServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Encargado" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
+          <Property Name="TelEncargado" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HistoricoAnuals" Relationship="Self.FK_HistoricoAnual_Servicio" FromRole="Servicio" ToRole="HistoricoAnual" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tutor">
+          <Key>
+            <PropertyRef Name="IDTutor" />
+          </Key>
+          <Property Name="IDTutor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelCasa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TelCelular" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TelTrabajo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CorreoElectronico" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Becadoes" Relationship="Self.FK_Becado_Tutor" FromRole="Tutor" ToRole="Becado" />
+        </EntityType>
+        <Association Name="FK_Becado_Tutor">
+          <End Role="Tutor" Type="Self.Tutor" Multiplicity="1" />
+          <End Role="Becado" Type="Self.Becado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tutor">
+              <PropertyRef Name="IDTutor" />
+            </Principal>
+            <Dependent Role="Becado">
+              <PropertyRef Name="IDPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Becado">
+          <End Role="Becado" Type="Self.Becado" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Becado">
+              <PropertyRef Name="IDBecado" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDBecado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Categoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IDCategoria" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="IDEscuela" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDEscuela" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FolioAnual_HistoricoAnual">
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="1" />
+          <End Role="FolioAnual" Type="Self.FolioAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoricoAnual">
+              <PropertyRef Name="IDHistoricoAnual" />
+            </Principal>
+            <Dependent Role="FolioAnual">
+              <PropertyRef Name="IDHistorico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Periodos">
+          <End Role="Periodos" Type="Self.Periodo" Multiplicity="1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodos">
+              <PropertyRef Name="IDPeriodos" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDPeriodos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HistoricoAnual_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="HistoricoAnual" Type="Self.HistoricoAnual" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="IDServicio" />
+            </Principal>
+            <Dependent Role="HistoricoAnual">
+              <PropertyRef Name="IDServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PamelaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Becadoes" EntityType="Self.Becado" />
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Escuelas" EntityType="Self.Escuela" />
+          <EntitySet Name="FolioAnuals" EntityType="Self.FolioAnual" />
+          <EntitySet Name="HistoricoAnuals" EntityType="Self.HistoricoAnual" />
+          <EntitySet Name="Periodos" EntityType="Self.Periodo" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicio" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tutors" EntityType="Self.Tutor" />
+          <AssociationSet Name="FK_Becado_Tutor" Association="Self.FK_Becado_Tutor">
+            <End Role="Tutor" EntitySet="Tutors" />
+            <End Role="Becado" EntitySet="Becadoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Becado" Association="Self.FK_HistoricoAnual_Becado">
+            <End Role="Becado" EntitySet="Becadoes" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Categoria" Association="Self.FK_HistoricoAnual_Categoria">
+            <End Role="Categoria" EntitySet="Categorias" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Escuela" Association="Self.FK_HistoricoAnual_Escuela">
+            <End Role="Escuela" EntitySet="Escuelas" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FolioAnual_HistoricoAnual" Association="Self.FK_FolioAnual_HistoricoAnual">
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+            <End Role="FolioAnual" EntitySet="FolioAnuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Periodos" Association="Self.FK_HistoricoAnual_Periodos">
+            <End Role="Periodos" EntitySet="Periodos" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HistoricoAnual_Servicio" Association="Self.FK_HistoricoAnual_Servicio">
+            <End Role="Servicio" EntitySet="Servicios" />
+            <End Role="HistoricoAnual" EntitySet="HistoricoAnuals" />
+          </AssociationSet>
+          <FunctionImport Name="ActualizaBecado">
+            <Parameter Name="idBecado" Mode="In" Type="Int32" />
+            <Parameter Name="idPadre" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarBecado">
+            <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+            <Parameter Name="NombreBecado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BuscarBecadoBD3" />
+          <FunctionImport Name="BuscarNuevaTabla" ReturnType="Collection(PamelaModel.BuscarNuevaTabla_Result)" />
+          <FunctionImport Name="InsertaAnual">
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaBecado">
+            <Parameter Name="idtutor" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="telefono" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaCategoria">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="duracionPeriodo" Mode="In" Type="String" />
+            <Parameter Name="numeroHoras" Mode="In" Type="Int32" />
+            <Parameter Name="parcialidad1" Mode="In" Type="Decimal" />
+            <Parameter Name="parcialidad2" Mode="In" Type="Decimal" />
+            <Parameter Name="parcialidad3" Mode="In" Type="Decimal" />
+            <Parameter Name="parcialidad4" Mode="In" Type="Decimal" />
+            <Parameter Name="parcialidad5" Mode="In" Type="Decimal" />
+            <Parameter Name="fechaP1" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaP2" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaP3" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaP4" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaP5" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaEscuela">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+            <Parameter Name="encargado" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaFolioAnual">
+            <Parameter Name="monto" Mode="In" Type="Decimal" />
+            <Parameter Name="fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="modopago" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaFolioSemestral">
+            <Parameter Name="IDFolio" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="ModoPago" Mode="In" Type="String" />
+            <Parameter Name="IDHistorico" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaHistoricoAnual">
+            <Parameter Name="idAnual" Mode="In" Type="Int32" />
+            <Parameter Name="idBecado" Mode="In" Type="Int32" />
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="idEscuela" Mode="In" Type="Int32" />
+            <Parameter Name="promedio" Mode="In" Type="Int32" />
+            <Parameter Name="idServicio" Mode="In" Type="Int32" />
+            <Parameter Name="horasRealizadas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaHistoricoSemestral">
+            <Parameter Name="idSemestral" Mode="In" Type="Int32" />
+            <Parameter Name="idBecado" Mode="In" Type="Int32" />
+            <Parameter Name="idCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="idEscuela" Mode="In" Type="Int32" />
+            <Parameter Name="promedio" Mode="In" Type="Int32" />
+            <Parameter Name="idServicio" Mode="In" Type="Int32" />
+            <Parameter Name="horasRealizadas" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaSemestral">
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaServicio">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="encargado" Mode="In" Type="String" />
+            <Parameter Name="telEncargado" Mode="In" Type="String" />
+            <Parameter Name="direccion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsertaTutor">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="apellidoPaterno" Mode="In" Type="String" />
+            <Parameter Name="apellidoMaterno" Mode="In" Type="String" />
+            <Parameter Name="actividad" Mode="In" Type="String" />
+            <Parameter Name="telCasa" Mode="In" Type="String" />
+            <Parameter Name="telCelular" Mode="In" Type="String" />
+            <Parameter Name="telTrabajo" Mode="In" Type="String" />
+            <Parameter Name="domicilio" Mode="In" Type="String" />
+            <Parameter Name="mail" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PamelaModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PamelaModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="View__BecadoTutor" ReturnType="Collection(PamelaModel.View__BecadoTutor_Result)" />
+          <FunctionImport Name="View__HistoricoEscuela" ReturnType="Collection(PamelaModel.View__HistoricoEscuela_Result)" />
+          <FunctionImport Name="View__HistoricoFolios" ReturnType="Collection(PamelaModel.View__HistoricoFolios_Result)" />
+          <FunctionImport Name="View__HistoricoPeriodosCategoriaBecadoTutor" ReturnType="Collection(PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutor_Result)" />
+          <FunctionImport Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuela" ReturnType="Collection(PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuela_Result)" />
+          <FunctionImport Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" ReturnType="Collection(PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result)" />
+          <FunctionImport Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" ReturnType="Collection(PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result)" />
+          <FunctionImport Name="View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio" ReturnType="Collection(PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result)" />
+          <FunctionImport Name="View__HistoricoServicio" ReturnType="Collection(PamelaModel.View__HistoricoServicio_Result)" />
+          <FunctionImport Name="View_Becado_BecadoTutor" ReturnType="Collection(PamelaModel.View_Becado_BecadoTutor_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoEscuela" ReturnType="Collection(PamelaModel.View_Becado_HistoricoEscuela_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoFolios" ReturnType="Collection(PamelaModel.View_Becado_HistoricoFolios_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutor" ReturnType="Collection(PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutor_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela" ReturnType="Collection(PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" ReturnType="Collection(PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" ReturnType="Collection(PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio" ReturnType="Collection(PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_Becado_HistoricoServicio" ReturnType="Collection(PamelaModel.View_Becado_HistoricoServicio_Result)">
+          <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="View_BecadoPeriodo_HistoricoFolios">
+            <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+            <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Grande">
+            <Parameter Name="IDBecado" Mode="In" Type="Int32" />
+            <Parameter Name="IDPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="BuscarNuevaTabla_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="View__BecadoTutor_Result">
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoEscuela_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Encargado" Nullable="true" MaxLength="160" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoFolios_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoPeriodosCategoriaBecadoTutor_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuela_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View__HistoricoServicio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDServicio" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Encargado" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TelEncargado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_BecadoTutor_Result">
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoEscuela_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Encargado" Nullable="true" MaxLength="160" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoFolios_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutor_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="String" Name="NombreEscuela" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="DireccionEscuela" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoEscuela" Nullable="true" MaxLength="160" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDPeriodos" Nullable="false" />
+          <Property Type="DateTime" Name="FechaInicio" Nullable="false" />
+          <Property Type="DateTime" Name="FechaFinal" Nullable="false" />
+          <Property Type="Int32" Name="IDCategoria" Nullable="false" />
+          <Property Type="String" Name="NombreCategoria" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DuracionPeriodo" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NumeroHoras" Nullable="false" />
+          <Property Type="Decimal" Name="Parcialidad1" Nullable="false" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad2" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad3" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad4" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="Parcialidad5" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="TotalAPagar" Nullable="true" Precision="19" />
+          <Property Type="DateTime" Name="FechaP1" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP2" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP3" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP4" Nullable="true" />
+          <Property Type="DateTime" Name="FechaP5" Nullable="true" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="String" Name="NombreBecado" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoPaternoBecado" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoMaternoBecado" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="TelefonoBecado" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="IDTutor" Nullable="false" />
+          <Property Type="String" Name="NombreTutor" Nullable="false" MaxLength="60" />
+          <Property Type="String" Name="ApellidoPaternoTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoMaternoTutor" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ActividadTutor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TelCasaTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCelularTutor" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="TelCasaTrabajo" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DomicilioTutor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CorreoElectronicoTutor" Nullable="true" MaxLength="256" />
+          <Property Type="Int32" Name="IDEscuela" Nullable="true" />
+          <Property Type="Int32" Name="Promedio" Nullable="true" />
+          <Property Type="Int32" Name="IDServicio" Nullable="true" />
+          <Property Type="String" Name="NombreServicio" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="DireccionServicio" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EncargadoServicio" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TecEncargadoServicio" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="HorasRealizadas" Nullable="true" />
+          <Property Type="Int32" Name="IDFolio" Nullable="false" />
+          <Property Type="Int32" Name="Parcialidad" Nullable="true" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" />
+          <Property Type="Decimal" Name="Monto" Nullable="false" Precision="19" />
+          <Property Type="String" Name="ModoPago" Nullable="false" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="View_Becado_HistoricoServicio_Result">
+          <Property Type="Int32" Name="IDHistoricoAnual" Nullable="false" />
+          <Property Type="Int32" Name="IDBecado" Nullable="false" />
+          <Property Type="Int32" Name="IDServicio" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Encargado" Nullable="true" MaxLength="160" />
+          <Property Type="String" Name="TelEncargado" Nullable="true" MaxLength="10" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PamelaModelStoreContainer" CdmEntityContainer="PamelaEntities">
+          <EntitySetMapping Name="Becadoes">
+            <EntityTypeMapping TypeName="PamelaModel.Becado">
+              <MappingFragment StoreEntitySet="Becado">
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDPadre" ColumnName="IDPadre" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="PamelaModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuelas">
+            <EntityTypeMapping TypeName="PamelaModel.Escuela">
+              <MappingFragment StoreEntitySet="Escuela">
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FolioAnuals">
+            <EntityTypeMapping TypeName="PamelaModel.FolioAnual">
+              <MappingFragment StoreEntitySet="FolioAnual">
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+                <ScalarProperty Name="IDHistorico" ColumnName="IDHistorico" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoricoAnuals">
+            <EntityTypeMapping TypeName="PamelaModel.HistoricoAnual">
+              <MappingFragment StoreEntitySet="HistoricoAnual">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodos">
+            <EntityTypeMapping TypeName="PamelaModel.Periodo">
+              <MappingFragment StoreEntitySet="Periodos">
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="PamelaModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="TelEncargado" ColumnName="TelEncargado" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PamelaModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tutors">
+            <EntityTypeMapping TypeName="PamelaModel.Tutor">
+              <MappingFragment StoreEntitySet="Tutor">
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="TelCasa" ColumnName="TelCasa" />
+                <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+                <ScalarProperty Name="TelTrabajo" ColumnName="TelTrabajo" />
+                <ScalarProperty Name="Domicilio" ColumnName="Domicilio" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ActualizaBecado" FunctionName="PamelaModel.Store.ActualizaBecado" />
+          <FunctionImportMapping FunctionImportName="BuscarBecado" FunctionName="PamelaModel.Store.BuscarBecado" />
+          <FunctionImportMapping FunctionImportName="BuscarBecadoBD3" FunctionName="PamelaModel.Store.BuscarBecadoBD3" />
+          <FunctionImportMapping FunctionImportName="BuscarNuevaTabla" FunctionName="PamelaModel.Store.BuscarNuevaTabla">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.BuscarNuevaTabla_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="InsertaAnual" FunctionName="PamelaModel.Store.InsertaAnual" />
+          <FunctionImportMapping FunctionImportName="InsertaBecado" FunctionName="PamelaModel.Store.InsertaBecado" />
+          <FunctionImportMapping FunctionImportName="InsertaCategoria" FunctionName="PamelaModel.Store.InsertaCategoria" />
+          <FunctionImportMapping FunctionImportName="InsertaEscuela" FunctionName="PamelaModel.Store.InsertaEscuela" />
+          <FunctionImportMapping FunctionImportName="InsertaFolioAnual" FunctionName="PamelaModel.Store.InsertaFolioAnual" />
+          <FunctionImportMapping FunctionImportName="InsertaFolioSemestral" FunctionName="PamelaModel.Store.InsertaFolioSemestral" />
+          <FunctionImportMapping FunctionImportName="InsertaHistoricoAnual" FunctionName="PamelaModel.Store.InsertaHistoricoAnual" />
+          <FunctionImportMapping FunctionImportName="InsertaHistoricoSemestral" FunctionName="PamelaModel.Store.InsertaHistoricoSemestral" />
+          <FunctionImportMapping FunctionImportName="InsertaSemestral" FunctionName="PamelaModel.Store.InsertaSemestral" />
+          <FunctionImportMapping FunctionImportName="InsertaServicio" FunctionName="PamelaModel.Store.InsertaServicio" />
+          <FunctionImportMapping FunctionImportName="InsertaTutor" FunctionName="PamelaModel.Store.InsertaTutor" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PamelaModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PamelaModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PamelaModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PamelaModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PamelaModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PamelaModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PamelaModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="View__BecadoTutor" FunctionName="PamelaModel.Store.View__BecadoTutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__BecadoTutor_Result">
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoEscuela" FunctionName="PamelaModel.Store.View__HistoricoEscuela">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoEscuela_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoFolios" FunctionName="PamelaModel.Store.View__HistoricoFolios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoFolios_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoPeriodosCategoriaBecadoTutor" FunctionName="PamelaModel.Store.View__HistoricoPeriodosCategoriaBecadoTutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutor_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoPeriodosCategoriaBecadoTutorEscuela" FunctionName="PamelaModel.Store.View__HistoricoPeriodosCategoriaBecadoTutorEscuela">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuela_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" FunctionName="PamelaModel.Store.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" FunctionName="PamelaModel.Store.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio" FunctionName="PamelaModel.Store.View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View__HistoricoServicio" FunctionName="PamelaModel.Store.View__HistoricoServicio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View__HistoricoServicio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="TelEncargado" ColumnName="TelEncargado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_BecadoTutor" FunctionName="PamelaModel.Store.View_Becado_BecadoTutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_BecadoTutor_Result">
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoEscuela" FunctionName="PamelaModel.Store.View_Becado_HistoricoEscuela">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoEscuela_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoFolios" FunctionName="PamelaModel.Store.View_Becado_HistoricoFolios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoFolios_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoPeriodosCategoriaBecadoTutor" FunctionName="PamelaModel.Store.View_Becado_HistoricoPeriodosCategoriaBecadoTutor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutor_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela" FunctionName="PamelaModel.Store.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuela_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial" FunctionName="PamelaModel.Store.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocial_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio" FunctionName="PamelaModel.Store.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorEscuelaSocialFolio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="NombreEscuela" ColumnName="NombreEscuela" />
+                <ScalarProperty Name="DireccionEscuela" ColumnName="DireccionEscuela" />
+                <ScalarProperty Name="EncargadoEscuela" ColumnName="EncargadoEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio" FunctionName="PamelaModel.Store.View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoPeriodosCategoriaBecadoTutorSocialFolio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDPeriodos" ColumnName="IDPeriodos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+                <ScalarProperty Name="DuracionPeriodo" ColumnName="DuracionPeriodo" />
+                <ScalarProperty Name="NumeroHoras" ColumnName="NumeroHoras" />
+                <ScalarProperty Name="Parcialidad1" ColumnName="Parcialidad1" />
+                <ScalarProperty Name="Parcialidad2" ColumnName="Parcialidad2" />
+                <ScalarProperty Name="Parcialidad3" ColumnName="Parcialidad3" />
+                <ScalarProperty Name="Parcialidad4" ColumnName="Parcialidad4" />
+                <ScalarProperty Name="Parcialidad5" ColumnName="Parcialidad5" />
+                <ScalarProperty Name="TotalAPagar" ColumnName="TotalAPagar" />
+                <ScalarProperty Name="FechaP1" ColumnName="FechaP1" />
+                <ScalarProperty Name="FechaP2" ColumnName="FechaP2" />
+                <ScalarProperty Name="FechaP3" ColumnName="FechaP3" />
+                <ScalarProperty Name="FechaP4" ColumnName="FechaP4" />
+                <ScalarProperty Name="FechaP5" ColumnName="FechaP5" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="NombreBecado" ColumnName="NombreBecado" />
+                <ScalarProperty Name="ApellidoPaternoBecado" ColumnName="ApellidoPaternoBecado" />
+                <ScalarProperty Name="ApellidoMaternoBecado" ColumnName="ApellidoMaternoBecado" />
+                <ScalarProperty Name="TelefonoBecado" ColumnName="TelefonoBecado" />
+                <ScalarProperty Name="IDTutor" ColumnName="IDTutor" />
+                <ScalarProperty Name="NombreTutor" ColumnName="NombreTutor" />
+                <ScalarProperty Name="ApellidoPaternoTutor" ColumnName="ApellidoPaternoTutor" />
+                <ScalarProperty Name="ApellidoMaternoTutor" ColumnName="ApellidoMaternoTutor" />
+                <ScalarProperty Name="ActividadTutor" ColumnName="ActividadTutor" />
+                <ScalarProperty Name="TelCasaTutor" ColumnName="TelCasaTutor" />
+                <ScalarProperty Name="TelCelularTutor" ColumnName="TelCelularTutor" />
+                <ScalarProperty Name="TelCasaTrabajo" ColumnName="TelCasaTrabajo" />
+                <ScalarProperty Name="DomicilioTutor" ColumnName="DomicilioTutor" />
+                <ScalarProperty Name="CorreoElectronicoTutor" ColumnName="CorreoElectronicoTutor" />
+                <ScalarProperty Name="IDEscuela" ColumnName="IDEscuela" />
+                <ScalarProperty Name="Promedio" ColumnName="Promedio" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="NombreServicio" ColumnName="NombreServicio" />
+                <ScalarProperty Name="DireccionServicio" ColumnName="DireccionServicio" />
+                <ScalarProperty Name="EncargadoServicio" ColumnName="EncargadoServicio" />
+                <ScalarProperty Name="TecEncargadoServicio" ColumnName="TecEncargadoServicio" />
+                <ScalarProperty Name="HorasRealizadas" ColumnName="HorasRealizadas" />
+                <ScalarProperty Name="IDFolio" ColumnName="IDFolio" />
+                <ScalarProperty Name="Parcialidad" ColumnName="Parcialidad" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="ModoPago" ColumnName="ModoPago" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_Becado_HistoricoServicio" FunctionName="PamelaModel.Store.View_Becado_HistoricoServicio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PamelaModel.View_Becado_HistoricoServicio_Result">
+                <ScalarProperty Name="IDHistoricoAnual" ColumnName="IDHistoricoAnual" />
+                <ScalarProperty Name="IDBecado" ColumnName="IDBecado" />
+                <ScalarProperty Name="IDServicio" ColumnName="IDServicio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Encargado" ColumnName="Encargado" />
+                <ScalarProperty Name="TelEncargado" ColumnName="TelEncargado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="View_BecadoPeriodo_HistoricoFolios" FunctionName="PamelaModel.Store.View_BecadoPeriodo_HistoricoFolios" />
+          <FunctionImportMapping FunctionImportName="Grande" FunctionName="PamelaModel.Store.Grande" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
