@@ -22,5 +22,11 @@ namespace Pamela_4._0.Models
         public Nullable<int> Parcialidad { get; set; }
     
         public virtual HistoricoAnual HistoricoAnual { get; set; }
+
+        public static int miDato()
+        {
+            return 1;
+        }
     }
+    
 }

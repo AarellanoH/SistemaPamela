@@ -135,11 +135,19 @@ namespace Pamela_4._0.Controllers
             var result = new PartialModels();
             using (var context = new PamelaEntities())
             {
+                int prueba = FolioAnual.miDato();
                 var info2 = new FolioAnual();
                 var info = context.View__HistoricoFolios();
                 result.historiaList = info.ToList();
                 result.anual = info2;
                 ViewBag.IDHistorico = new SelectList(db.HistoricoAnuals, "IDHistoricoAnual", "IDHistoricoAnual", info2.IDHistorico);
+                List<SelectListItem> parcialidad = new List<SelectListItem>();
+                parcialidad.Add(new SelectListItem { Text = "1", Value = "1" });
+                parcialidad.Add(new SelectListItem { Text = "2", Value = "2" });
+                parcialidad.Add(new SelectListItem { Text = "3", Value = "3" });
+                parcialidad.Add(new SelectListItem { Text = "4", Value = "4" });
+                parcialidad.Add(new SelectListItem { Text = "5", Value = "5" });
+                ViewBag.Parcialidad = new SelectList(parcialidad, "Value", "Text");
             }
 
             return View(result);
