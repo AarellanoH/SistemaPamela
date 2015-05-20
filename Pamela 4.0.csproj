@@ -465,6 +465,7 @@
     <Content Include="Views\FolioAnuals\FolioView.cshtml" />
     <Content Include="Views\FolioAnuals\PartialView.cshtml" />
     <Content Include="Views\Becados\FolioView.cshtml" />
+    <Content Include="Views\FolioAnuals\IndexAlumnos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
